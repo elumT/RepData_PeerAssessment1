@@ -76,12 +76,6 @@ class(activity_data$date)
 ## [1] "Date"
 ```
 
-```r
-#make new columns for months and days
-activity_data$month <- month(activity_data$date)
-activity_data$day <- day(activity_data$date)
-```
-
 ###What is mean total number of steps taken per day?
 
 *1. Calculate the total number of steps taken per day*
@@ -89,7 +83,7 @@ activity_data$day <- day(activity_data$date)
 ```r
 compute_total_steps <- function(data){ 
     data %>% 
-      group_by(day) %>% 
+      group_by(date) %>% 
       summarize(total_steps_per_day = sum(steps, na.rm = TRUE))
 }
 total_steps <- compute_total_steps(activity_data)
@@ -98,20 +92,20 @@ total_steps
 ```
 
 ```
-## # A tibble: 31 × 2
-##      day total_steps_per_day
-##    <int>               <int>
-## 1      1                   0
-## 2      2               10726
-## 3      3               21923
-## 4      4               12116
-## 5      5               23733
-## 6      6               23754
-## 7      7               23898
-## 8      8                3219
-## 9      9               12811
-## 10    10                9900
-## # ... with 21 more rows
+## # A tibble: 61 × 2
+##          date total_steps_per_day
+##        <date>               <int>
+## 1  2012-10-01                   0
+## 2  2012-10-02                 126
+## 3  2012-10-03               11352
+## 4  2012-10-04               12116
+## 5  2012-10-05               13294
+## 6  2012-10-06               15420
+## 7  2012-10-07               11015
+## 8  2012-10-08                   0
+## 9  2012-10-09               12811
+## 10 2012-10-10                9900
+## # ... with 51 more rows
 ```
 
 *2. Make a histogram of the total number of steps taken each day*
@@ -133,7 +127,7 @@ mean(total_steps$total_steps_per_day)
 ```
 
 ```
-## [1] 18406.71
+## [1] 9354.23
 ```
 
 ```r
@@ -141,7 +135,7 @@ median(total_steps$total_steps_per_day)
 ```
 
 ```
-## [1] 20525
+## [1] 10395
 ```
 
 ###What is the average daily activity pattern?
@@ -194,13 +188,13 @@ head(new_data)
 ```
 
 ```
-##   steps       date interval month day
-## 1    NA 2012-10-01        0    10   1
-## 2    NA 2012-10-01        5    10   1
-## 3    NA 2012-10-01       10    10   1
-## 4    NA 2012-10-01       15    10   1
-## 5    NA 2012-10-01       20    10   1
-## 6    NA 2012-10-01       25    10   1
+##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25
 ```
 
 ```r
@@ -216,13 +210,13 @@ head(new_data)
 ```
 
 ```
-##   steps       date interval month day
-## 1     2 2012-10-01        0    10   1
-## 2     0 2012-10-01        5    10   1
-## 3     0 2012-10-01       10    10   1
-## 4     0 2012-10-01       15    10   1
-## 5     0 2012-10-01       20    10   1
-## 6     2 2012-10-01       25    10   1
+##   steps       date interval
+## 1     2 2012-10-01        0
+## 2     0 2012-10-01        5
+## 3     0 2012-10-01       10
+## 4     0 2012-10-01       15
+## 5     0 2012-10-01       20
+## 6     2 2012-10-01       25
 ```
 
 ```r
@@ -251,7 +245,7 @@ mean(new_total_steps$total_steps_per_day)
 ```
 
 ```
-## [1] 21184
+## [1] 10765.64
 ```
 
 ```r
@@ -259,7 +253,7 @@ median(new_total_steps$total_steps_per_day)
 ```
 
 ```
-## [1] 21641
+## [1] 10762
 ```
 
 As we can see, the new values are different (both slightly higher) from those obtained before imputing the missing values. 
@@ -275,12 +269,10 @@ str(new_data)
 ```
 
 ```
-## 'data.frame':	17568 obs. of  6 variables:
+## 'data.frame':	17568 obs. of  4 variables:
 ##  $ steps   : num  2 0 0 0 0 2 1 1 0 1 ...
 ##  $ date    : Date, format: "2012-10-01" "2012-10-01" ...
 ##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
-##  $ month   : num  10 10 10 10 10 10 10 10 10 10 ...
-##  $ day     : int  1 1 1 1 1 1 1 1 1 1 ...
 ##  $ weekday : Factor w/ 2 levels "weekday","weekend": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
