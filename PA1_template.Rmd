@@ -9,7 +9,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-###Loading and preprocessing the data
+## Loading and preprocessing the data
 
 *Loading packages necessary for analysis.*
 ```{r load_packages, echo=TRUE, message=FALSE}
@@ -44,7 +44,7 @@ activity_data$date <- ymd(activity_data$date)
 class(activity_data$date)
 ```
 
-###What is mean total number of steps taken per day?
+## What is mean total number of steps taken per day?
 
 *1. Calculate the total number of steps taken per day*
 ```{r echo = TRUE}
@@ -73,7 +73,7 @@ mean(total_steps$total_steps_per_day)
 median(total_steps$total_steps_per_day)
 ```
 
-###What is the average daily activity pattern?
+## What is the average daily activity pattern?
 
 *1. Time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)*
 ```{r timeserie1, echo = TRUE}
@@ -94,7 +94,7 @@ max_step_interval <- steps_per_interval$interval[idx_max]
 ```
 The maximum number of steps (on average `r round(max_num_steps)`) contains the interval: `r max_step_interval` (which is consistent with the previous graph).
 
-###Imputing missing values
+## Imputing missing values
 
 *1. Calculate total number of missing values*
 ```{r computeNA, echo = TRUE}
@@ -142,7 +142,7 @@ median(new_total_steps$total_steps_per_day)
 
 As we can see, the new values are different (both slightly higher) from those obtained before imputing the missing values. 
 
-###Are there differences in activity patterns between weekdays and weekends?
+## Are there differences in activity patterns between weekdays and weekends?
 
 *1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day*
 ```{r echo = TRUE}

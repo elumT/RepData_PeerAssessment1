@@ -7,7 +7,7 @@ output:
     keep_md: true
 ---
 
-###Loading and preprocessing the data
+## Loading and preprocessing the data
 
 *Loading packages necessary for analysis.*
 
@@ -76,7 +76,7 @@ class(activity_data$date)
 ## [1] "Date"
 ```
 
-###What is mean total number of steps taken per day?
+## What is mean total number of steps taken per day?
 
 *1. Calculate the total number of steps taken per day*
 
@@ -138,7 +138,7 @@ median(total_steps$total_steps_per_day)
 ## [1] 10395
 ```
 
-###What is the average daily activity pattern?
+## What is the average daily activity pattern?
 
 *1. Time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)*
 
@@ -163,7 +163,7 @@ max_step_interval <- steps_per_interval$interval[idx_max]
 ```
 The maximum number of steps (on average 206) contains the interval: 835 (which is consistent with the previous graph).
 
-###Imputing missing values
+## Imputing missing values
 
 *1. Calculate total number of missing values*
 
@@ -258,7 +258,7 @@ median(new_total_steps$total_steps_per_day)
 
 As we can see, the new values are different (both slightly higher) from those obtained before imputing the missing values. 
 
-###Are there differences in activity patterns between weekdays and weekends?
+## Are there differences in activity patterns between weekdays and weekends?
 
 *1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day*
 

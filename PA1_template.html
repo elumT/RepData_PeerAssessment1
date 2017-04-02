@@ -123,8 +123,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="loading-and-preprocessing-the-data" class="section level3">
-<h3>Loading and preprocessing the data</h3>
+<div id="loading-and-preprocessing-the-data" class="section level2">
+<h2>Loading and preprocessing the data</h2>
 <p><em>Loading packages necessary for analysis.</em></p>
 <pre class="r"><code>library(lubridate)
 library(dplyr)
@@ -160,8 +160,8 @@ class(activity_data$date)</code></pre>
 class(activity_data$date)</code></pre>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 </div>
-<div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level3">
-<h3>What is mean total number of steps taken per day?</h3>
+<div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">
+<h2>What is mean total number of steps taken per day?</h2>
 <p><em>1. Calculate the total number of steps taken per day</em></p>
 <pre class="r"><code>compute_total_steps &lt;- function(data){ 
     data %&gt;% 
@@ -200,8 +200,8 @@ total_steps_hist(total_steps)</code></pre>
 <pre class="r"><code>median(total_steps$total_steps_per_day)</code></pre>
 <pre><code>## [1] 10395</code></pre>
 </div>
-<div id="what-is-the-average-daily-activity-pattern" class="section level3">
-<h3>What is the average daily activity pattern?</h3>
+<div id="what-is-the-average-daily-activity-pattern" class="section level2">
+<h2>What is the average daily activity pattern?</h2>
 <p><em>1. Time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</em></p>
 <pre class="r"><code>steps_per_interval &lt;- activity_data %&gt;%
   filter(!is.na(steps)) %&gt;%
@@ -220,8 +220,8 @@ idx_max &lt;- which(steps_per_interval$average_number_of_steps == max_num_steps)
 max_step_interval &lt;- steps_per_interval$interval[idx_max]</code></pre>
 <p>The maximum number of steps (on average 206) contains the interval: 835 (which is consistent with the previous graph).</p>
 </div>
-<div id="imputing-missing-values" class="section level3">
-<h3>Imputing missing values</h3>
+<div id="imputing-missing-values" class="section level2">
+<h2>Imputing missing values</h2>
 <p><em>1. Calculate total number of missing values</em></p>
 <pre class="r"><code>na_num &lt;- sum(is.na(activity_data))
 na_step &lt;- sum(is.na(activity_data$steps))</code></pre>
@@ -273,8 +273,8 @@ total_steps_hist(new_total_steps)</code></pre>
 <pre><code>## [1] 10762</code></pre>
 <p>As we can see, the new values are different (both slightly higher) from those obtained before imputing the missing values.</p>
 </div>
-<div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level3">
-<h3>Are there differences in activity patterns between weekdays and weekends?</h3>
+<div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
+<h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 <p><em>1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day</em></p>
 <pre class="r"><code>new_data$weekday &lt;- as.factor(ifelse(wday(new_data$date) %in% c(1,7), &quot;weekend&quot;,&quot;weekday&quot;))
 #there is now a new factor variable in the new_data:
