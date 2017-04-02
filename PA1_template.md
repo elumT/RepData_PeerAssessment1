@@ -112,7 +112,7 @@ total_steps
 
 ```r
 total_steps_hist <- function(data){
-    hist(data$total_steps_per_day, xlim = c(0, 35000), xlab = "Total number of steps taken per day", ylab = "Number of days", main = "Total number of steps taken each day", col = "darkolivegreen2")
+    hist(data$total_steps_per_day, xlim = c(0, 25000), xlab = "Total number of steps taken per day", ylab = "Number of days", main = "Total number of steps taken each day", col = "darkolivegreen2")
 }
 total_steps_hist(total_steps)
 ```
